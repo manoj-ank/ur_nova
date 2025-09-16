@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur_nova">
+
+  <xacro:include
+    filename="$(find nova_carter_description)/urdf/nova_carter_platform_macro.urdf.xacro" />
+
+  <!-- Constants -->
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+
+  <link name="base_footprint" />
+  <xacro:nova_carter_platform name="nova_carter" parent="base_footprint">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </xacro:nova_carter_platform>
+
+  <!-- ur5 -->
+  <xacro:include filename="$(find robot_description)/urdf/ur5.urdf.xacro" />
+
+  <!-- arm -->
+  <xacro:ur5_robot prefix="" joint_limited="false" />
+
+  <joint name="nova_ur_joint" type="fixed">
+    <origin xyz="-0.25 0 0.48" rpy="0 0 0" />
+    <parent link="base_footprint" />
+    <child link="base_link" />
+  </joint>
+
+</robot>
