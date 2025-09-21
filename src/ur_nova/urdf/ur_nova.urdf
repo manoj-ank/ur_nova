@@ -22,21 +22,21 @@
   </joint>
   <joint name="joint_wheel_left" type="continuous">
     <origin rpy="-1.5707963267948966 0.0 0.0" xyz="0.0 0.1726 0.14"/>
-    <parent link="nova_carter"/>
+    <parent link="base_link_nova"/>
     <child link="wheel_left"/>
     <axis xyz="0.0 0.0 1.0"/>
     <dynamics damping="0.01" friction="0.1"/>
   </joint>
   <joint name="joint_wheel_right" type="continuous">
     <origin rpy="-1.5707963267948966 0.0 0.0" xyz="0.0 -0.1726 0.14"/>
-    <parent link="nova_carter"/>
+    <parent link="base_link_nova"/>
     <child link="wheel_right"/>
     <axis xyz="0.0 0.0 1.0"/>
     <dynamics damping="0.01" friction="0.1"/>
   </joint>
   <joint name="joint_caster_base" type="revolute">
     <origin rpy="-1.5707963267948966 0.0 1.5707963267948966" xyz="-0.47195 0.0 0.22289"/>
-    <parent link="nova_carter"/>
+    <parent link="base_link_nova"/>
     <child link="nova_carter_caster_frame_base"/>
     <axis xyz="0.0 0.0 1.0"/>
     <limit effort="100000000.0" lower="-0.0349066" upper="0.0349066" velocity="0.0"/>
@@ -59,7 +59,7 @@
   <joint name="nova_carter_joint" type="fixed">
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
     <parent link="base_footprint"/>
-    <child link="nova_carter"/>
+    <child link="base_link_nova"/>
   </joint>
   <!-- Links and Meshes -->
   <link name="caster_swivel_left">
@@ -71,9 +71,15 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="-0.000002 0.000004 -0.000002"/>
       <geometry>
-        <mesh filename="package://nova_carter_description/meshes/caster_swivel.obj"/>
+        <mesh filename="package://nova_carter_description/meshes/caster_swivel.stl"/>
       </geometry>
     </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="-0.000002 0.000004 -0.000002"/>
+      <geometry>
+        <mesh filename="package://nova_carter_description/meshes/caster_swivel.stl"/>
+      </geometry>
+    </collision>
   </link>
   <link name="caster_swivel_right">
     <inertial>
@@ -84,9 +90,15 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="-0.0000021 0.0 -0.0000001"/>
       <geometry>
-        <mesh filename="package://nova_carter_description/meshes/caster_swivel.obj"/>
+        <mesh filename="package://nova_carter_description/meshes/caster_swivel.stl"/>
       </geometry>
     </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="-0.0000021 0.0 -0.0000001"/>
+      <geometry>
+        <mesh filename="package://nova_carter_description/meshes/caster_swivel.stl"/>
+      </geometry>
+    </collision>
   </link>
   <link name="caster_wheel_left">
     <inertial>
@@ -97,7 +109,7 @@
     <visual>
       <origin rpy="3.141592653589793 0.0 0.0" xyz="0.0 -0.000005 -0.023039"/>
       <geometry>
-        <mesh filename="package://nova_carter_description/meshes/caster_wheel.obj"/>
+        <mesh filename="package://nova_carter_description/meshes/caster_wheel.stl"/>
       </geometry>
     </visual>
     <collision>
@@ -124,7 +136,7 @@
     <visual>
       <origin rpy="3.141592653589793 0.0 0.0" xyz="0.0 -0.000005 -0.0230391"/>
       <geometry>
-        <mesh filename="package://nova_carter_description/meshes/caster_wheel.obj"/>
+        <mesh filename="package://nova_carter_description/meshes/caster_wheel.stl"/>
       </geometry>
     </visual>
     <collision>
@@ -142,7 +154,7 @@
       </surface>
     </collision>
   </link>
-  <link name="nova_carter">
+  <link name="base_link_nova">
     <inertial>
       <origin rpy="0.0 0.0 0.0" xyz="-0.209765 0.0 0.282844"/>
       <mass value="52.90850067138672"/>
@@ -151,13 +163,13 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://nova_carter_description/meshes/chassis_link.obj"/>
+        <mesh filename="package://nova_carter_description/meshes/chassis_link.stl"/>
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0.0 0.0 0.0" xyz="-0.23 0.0 0.3"/>
       <geometry>
-        <mesh filename="package://nova_carter_description/meshes/chassis_link.obj"/>
+      <box size=" 0.67 0.35 0.26" />
       </geometry>
     </collision>
   </link>
@@ -170,9 +182,15 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://nova_carter_description/meshes/caster_frame_base.obj"/>
+        <mesh filename="package://nova_carter_description/meshes/caster_frame_base.stl"/>
       </geometry>
     </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://nova_carter_description/meshes/caster_frame_base.stl"/>
+      </geometry>
+    </collision>
   </link>
   <link name="wheel_left">
     <inertial>
@@ -183,7 +201,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="-0.0 0.0 0.034"/>
       <geometry>
-        <mesh filename="package://nova_carter_description/meshes/nova_carter_wheel_left.obj"/>
+        <mesh filename="package://nova_carter_description/meshes/nova_carter_wheel_left.stl"/>
       </geometry>
     </visual>
     <collision>
@@ -238,7 +256,7 @@
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="-0.0 0.0 -0.034"/>
       <geometry>
-        <mesh filename="package://nova_carter_description/meshes/nova_carter_wheel_left.obj"/>
+        <mesh filename="package://nova_carter_description/meshes/nova_carter_wheel_left.stl"/>
       </geometry>
     </visual>
     <collision>
@@ -300,30 +318,10 @@
   <!-- In CAD this distance is 0.930, but in the spec it is 0.09465 -->
   <!--property name="wrist_3_length" value="0.0823" /-->
   <!-- manually measured -->
-  <link name="base_link">
-    <visual>
-      <geometry>
-        <mesh filename="package://robot_description/meshes/ur5/visual/base.dae"/>
-      </geometry>
-      <material name="LightGrey">
-        <color rgba="0.7 0.7 0.7 1.0"/>
-      </material>
-    </visual>
-    <collision>
-      <geometry>
-        <mesh filename="package://robot_description/meshes/ur5/collision/base.stl"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="40.0"/>
-      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.17499993000000003" ixy="0.0" ixz="0.0" iyy="0.17499993000000003" iyz="0.0" izz="0.2"/>
-    </inertial>
-  </link>
   <joint name="shoulder_pan_joint" type="revolute">
-    <parent link="base_link"/>
+    <parent link="base_link_nova"/>
     <child link="shoulder_link"/>
-    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.089159"/>
+    <origin rpy="0 0 0" xyz="-0.23 0 0.55"/>
     <axis xyz="0 0 1"/>
     <limit effort="150.0" lower="-6.283185307179586" upper="6.283185307179586" velocity="3.15"/>
     <dynamics damping="0.0" friction="0.0"/>
@@ -488,7 +486,7 @@
       <inertia ixx="0.017136473145408" ixy="0.0" ixz="0.0" iyy="0.017136473145408" iyz="0.0" izz="0.033822"/>
     </inertial>
   </link>
-  <joint name="ee_fixed_joint" type="fixed">
+  <!-- <joint name="ee_fixed_joint" type="fixed">
     <parent link="wrist_3_link"/>
     <child link="ee_link"/>
     <origin rpy="0.0 0.0 1.5707963267948966" xyz="0.0 0.0823 0.0"/>
@@ -500,35 +498,5 @@
       </geometry>
       <origin rpy="0 0 0" xyz="-0.01 0 0"/>
     </collision>
-  </link>
-  <!-- ROS base_link to UR 'Base' Coordinates transform -->
-  <link name="base"/>
-  <joint name="base_link-base_fixed_joint" type="fixed">
-    <!-- NOTE: this rotation is only needed as long as base_link itself is
-                 not corrected wrt the real robot (ie: rotated over 180
-                 degrees)
-      -->
-    <origin rpy="0 0 -3.141592653589793" xyz="0 0 0"/>
-    <parent link="base_link"/>
-    <child link="base"/>
-  </joint>
-  <!-- Frame coincident with all-zeros TCP on UR controller -->
-  <link name="tool0"/>
-  <joint name="wrist_3_link-tool0_fixed_joint" type="fixed">
-    <origin rpy="-1.5707963267948966 0 0" xyz="0 0.0823 0"/>
-    <parent link="wrist_3_link"/>
-    <child link="tool0"/>
-  </joint>
-  <link name="ur5_mount">
-  </link>
-  <joint name="nova_ur_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.25 0 0.48"/>
-    <parent link="base_footprint"/>
-    <child link="ur5_mount"/>
-  </joint>
-  <joint name="nova_mount_joint" type="fixed">
-    <parent link="ur5_mount"/>
-    <child link="base_link"/>
-    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-  </joint>
+  </link> -->
 </robot>
